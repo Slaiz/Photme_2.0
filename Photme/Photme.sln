@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Photme_PortableLibrary", "Photme_PortableLibrary\Photme_PortableLibrary.csproj", "{77685931-9B8A-41EE-92E5-A5483FD29BEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Photme_WPF", "Photme_WPF\Photme_WPF.csproj", "{0827B94B-93EF-499A-B20F-285EE7F2F1B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Photme_Android", "Photme_Android\Photme_Android.csproj", "{AD3B120E-98E7-41A0-97FF-037BDFF2EC49}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77685931-9B8A-41EE-92E5-A5483FD29BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77685931-9B8A-41EE-92E5-A5483FD29BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77685931-9B8A-41EE-92E5-A5483FD29BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77685931-9B8A-41EE-92E5-A5483FD29BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0827B94B-93EF-499A-B20F-285EE7F2F1B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0827B94B-93EF-499A-B20F-285EE7F2F1B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0827B94B-93EF-499A-B20F-285EE7F2F1B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0827B94B-93EF-499A-B20F-285EE7F2F1B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD3B120E-98E7-41A0-97FF-037BDFF2EC49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD3B120E-98E7-41A0-97FF-037BDFF2EC49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD3B120E-98E7-41A0-97FF-037BDFF2EC49}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AD3B120E-98E7-41A0-97FF-037BDFF2EC49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD3B120E-98E7-41A0-97FF-037BDFF2EC49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD3B120E-98E7-41A0-97FF-037BDFF2EC49}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
