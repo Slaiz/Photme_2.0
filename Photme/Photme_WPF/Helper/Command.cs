@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Photme_WPF.ViewModel
+namespace Photme_WPF.Helper
 {
     class Command : ICommand
     {

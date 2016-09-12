@@ -34,7 +34,6 @@ namespace Photme_Android
         EditText notesTextEdit;
         EditText nameTextEdit;
         Button saveButton;
-        Button cancelDeleteButton;
         Button captureButton;
 
         protected override void OnCreate(Bundle bundle)

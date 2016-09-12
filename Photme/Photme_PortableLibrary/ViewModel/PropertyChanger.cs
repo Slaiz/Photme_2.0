@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace Photme_WPF.ViewModel
+namespace Photme_PortableLibrary.ViewModel
 {
-    class PropertyChanger : INotifyPropertyChanged
+    public class PropertyChanger : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

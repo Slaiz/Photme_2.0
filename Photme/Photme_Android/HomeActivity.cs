@@ -4,6 +4,7 @@ using Android.Widget;
 using Android.OS;
 using Android.Views;
 using Photme_PortableLibrary.Model;
+using Photme_PortableLibrary.ViewModel;
 
 namespace Photme_Android
 {
@@ -45,7 +46,7 @@ namespace Photme_Android
         {
             base.OnResume();
 
-            //_photos = FotmiApp.Current.PhotoService.GetPhotos();
+            //_photos = 
 
             // create our adapter
             _photoList = new PhotoItemListAdapter(this, _photos);

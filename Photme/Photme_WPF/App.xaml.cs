@@ -1,6 +1,6 @@
 ﻿using System.Windows;
+using Photme_WPF.Helper;
 using Photme_WPF.View;
-using Photme_WPF.ViewModel;
 
 namespace Photme_WPF
 {
@@ -13,7 +13,7 @@ namespace Photme_WPF
         {
             var mw = new MainWindow
             {
-                DataContext = new MainViewModel()
+                DataContext = new Main()
             };
 
             mw.Show();

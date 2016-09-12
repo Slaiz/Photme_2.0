@@ -67,10 +67,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\BmpConverter.cs" />
-    <Compile Include="ViewModel\Command.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\PropertyChanger.cs" />
+    <Compile Include="Helper\BmpConverter.cs" />
+    <Compile Include="Helper\Command.cs" />
+    <Compile Include="Helper\Main.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

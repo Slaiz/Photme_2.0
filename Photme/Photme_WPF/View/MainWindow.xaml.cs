@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using Photme_WPF.ViewModel;
 
 namespace Photme_WPF.View
 {

@@ -4,7 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Data;
 
-namespace Photme_WPF.ViewModel
+namespace Photme_WPF.Helper
 {
     class BmpConverter : IValueConverter
     {

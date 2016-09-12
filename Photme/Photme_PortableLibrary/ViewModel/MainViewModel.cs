@@ -1,17 +1,11 @@
 ﻿using System.Collections.ObjectModel;
-using System.IO;
-using System.Windows;
 using System.Windows.Input;
 using Photme_PortableLibrary.Model;
-using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
-namespace Photme_WPF.ViewModel
+namespace Photme_PortableLibrary.ViewModel
 {
-    class MainViewModel : PropertyChanger
+    public class MainViewModel : PropertyChanger
     {
-        public ICommand ClickCommand { get; set; }
-        public ICommand AddCommand { get; set; }
-        public ICommand UploadCommand { get; set; }
 
         private ObservableCollection<PhotoItem> itemsList = new ObservableCollection<PhotoItem>();
 
@@ -80,42 +74,5 @@ namespace Photme_WPF.ViewModel
             }
         }
 
-        public MainViewModel()
-        {
-            UploadCommand = new Command(arg => UploadMethod());
-            AddCommand = new Command(arg => AddMethod());
-        }
-
-        private void AddMethod()
-        {
-            if (TextProperty1 == "" || TextProperty2 == "")
-            { MessageBox.Show("Please write all fields"); return; }
-
-            itemsList.Add(new PhotoItem(TextProperty1, TextProperty2, ImageBytes));
-            OnPropertyChanged(nameof(ItemsList));
-
-            TextProperty1 = "";
-            TextProperty2 = "";
-        }
-
-        private void UploadMethod()
-        {
-            OpenFileDialog f = new OpenFileDialog();
-            f.Filter = "All Files|*.*|JPEGs|*.jpg|Bitmaps|*.bmp|GIFs|*.gif";
-            if (f.ShowDialog() == true)
-            {
-                ImagePathProperty = f.FileName;
-                ImageConverter(f.FileName);
-            }
-        }
-
-        private void ImageConverter(string path)
-        {
-            FileInfo fileInfo = new FileInfo(path);
-            long imageFileLength = fileInfo.Length;
-            FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
-            BinaryReader br = new BinaryReader(fs);
-            ImageBytes = br.ReadBytes((int)imageFileLength);
-        }
     }
 }
