@@ -11,10 +11,11 @@ namespace Photme_Android
     [Activity(Label = "Photme_Android", MainLauncher = true, Icon = "@drawable/icon")]
     public class HomeActivity : Activity
     {
+        IList<PhotoItem> photos;
         PhotoItemListAdapter _photoList;
-        IList<PhotoItem> _photos;
         Button addPhotoButton;
         ListView photoListView;
+        MainViewModel mv = new MainViewModel();
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -46,10 +47,10 @@ namespace Photme_Android
         {
             base.OnResume();
 
-            //_photos = 
+            photos = mv.ItemsList;
 
             // create our adapter
-            _photoList = new PhotoItemListAdapter(this, _photos);
+            _photoList = new PhotoItemListAdapter(this, photos);
 
             //Hook up our adapter to our ListView
             photoListView.Adapter = _photoList;

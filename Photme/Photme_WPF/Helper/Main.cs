@@ -8,48 +8,50 @@ using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace Photme_WPF.Helper
 {
-    class Main
-    {
-        public ICommand ClickCommand { get; set; }
-        public ICommand AddCommand { get; set; }
-        public ICommand UploadCommand { get; set; }
+    //class Main
+    //{
+    //    public ICommand AddCommand { get; set; }
+    //    public ICommand UploadCommand { get; set; }
 
-        public Main()
-        {
-            UploadCommand = new Command(arg => UploadMethod());
-            AddCommand = new Command(arg => AddMethod());
-        }
+    //    MainViewModel vm = new MainViewModel();
+    //    BaseViewModel bm = new BaseViewModel();
 
-        private void AddMethod()
-        {
-            if (TextProperty1 == "" || TextProperty2 == "")
-            { MessageBox.Show("Please write all fields"); return; }
+    //    public Main()
+    //    {
+    //        UploadCommand = new Command(arg => UploadMethod());
+    //        AddCommand = new Command(arg => AddMethod());
+    //    }
 
-            itemsList.Add(new PhotoItem(TextProperty1, TextProperty2, ImageBytes));
-            OnPropertyChanged(nameof(ItemsList));
+    //    private void AddMethod()
+    //    {
+    //        if (vm.TextProperty1 == "" || vm.TextProperty2 == "")
+    //        { MessageBox.Show("Please write all fields"); return; }
 
-            TextProperty1 = "";
-            TextProperty2 = "";
-        }
+    //        vm.ItemsList.Add(new PhotoItem(vm.TextProperty1, vm.TextProperty2, vm.ImageBytes));
+    //        bm.OnPropertyChanged(nameof(vm.ItemsList));
 
-        private void UploadMethod()
-        {
-            OpenFileDialog f = new OpenFileDialog();
-            f.Filter = "All Files|*.*|JPEGs|*.jpg|Bitmaps|*.bmp|GIFs|*.gif";
-            if (f.ShowDialog() == true)
-            {
-                ImagePathProperty = f.FileName;
-                ImageConverter(f.FileName);
-            }
-        }
+    //        vm.TextProperty1 = "";
+    //        vm.TextProperty2 = "";
+    //    }
 
-        private void ImageConverter(string path)
-        {
-            FileInfo fileInfo = new FileInfo(path);
-            long imageFileLength = fileInfo.Length;
-            FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
-            BinaryReader br = new BinaryReader(fs);
-            ImageBytes = br.ReadBytes((int)imageFileLength);
-        }
-    }
+    //    private void UploadMethod()
+    //    {
+    //        OpenFileDialog f = new OpenFileDialog();
+    //        f.Filter = "All Files|*.*|JPEGs|*.jpg|Bitmaps|*.bmp|GIFs|*.gif";
+    //        if (f.ShowDialog() == true)
+    //        {
+    //            vm.ImagePathProperty = f.FileName;
+    //            ImageConverter(f.FileName);
+    //        }
+    //    }
+
+    //    private void ImageConverter(string path)
+    //    {
+    //        FileInfo fileInfo = new FileInfo(path);
+    //        long imageFileLength = fileInfo.Length;
+    //        FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+    //        BinaryReader br = new BinaryReader(fs);
+    //        vm.ImageBytes = br.ReadBytes((int)imageFileLength);
+    //    }
+    //}
 }

@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Android.App;
 using Android.Graphics;
 using Android.Views;
 using Android.Widget;
 using Photme_PortableLibrary.Model;
+using Photme_PortableLibrary.ViewModel;
 
 namespace Photme_Android
 {
@@ -16,10 +18,10 @@ namespace Photme_Android
         Activity _context = null;
         IList<PhotoItem> _photos = new List<PhotoItem>();
 
-        public PhotoItemListAdapter(Activity context, IList<PhotoItem> photos)
+        public PhotoItemListAdapter(Activity context, IList<PhotoItem> photo )
         {
             _context = context;
-            _photos = photos;
+            _photos = photo;
         }
 
         public override PhotoItem this[int position]

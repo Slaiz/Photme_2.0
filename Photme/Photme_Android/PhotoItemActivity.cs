@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Provider;
 using Android.Widget;
 using Photme_PortableLibrary.Model;
+using Photme_PortableLibrary.ViewModel;
 using File = Java.IO.File;
 using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
@@ -28,13 +29,13 @@ namespace Photme_Android
 
     public class PhotoItemActivity : Activity
     {
-        PhotoItem _photo = new PhotoItem();
         ImageView imageView;
-        byte[] _byteData;
         EditText notesTextEdit;
         EditText nameTextEdit;
         Button saveButton;
         Button captureButton;
+        byte[] _byteData;
+        MainViewModel vm = new MainViewModel();
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -51,8 +52,8 @@ namespace Photme_Android
             saveButton = FindViewById<Button>(Resource.Id.SaveButton);
             captureButton = FindViewById<Button>(Resource.Id.CaptureButton);
 
-            nameTextEdit.Text = _photo.Name;
-            notesTextEdit.Text = _photo.Note;
+            nameTextEdit.Text = vm.TextProperty1;
+            notesTextEdit.Text = vm.TextProperty2;
 
 
             imageView.SetImageResource(Resource.Drawable.Icon);
@@ -95,11 +96,11 @@ namespace Photme_Android
 
         void Save()
         {
-            _photo.Name = nameTextEdit.Text;
-            _photo.Note = notesTextEdit.Text;
-            _photo.Image = _byteData;
+            vm.TextProperty1 = nameTextEdit.Text;
+            vm.TextProperty2 = notesTextEdit.Text;
+            vm.ImageBytes = _byteData;
 
-            //FotmiApp.Current.PhotoService.SavePhoto(_photo);
+            vm.ItemsList.Add(new PhotoItem(vm.TextProperty1, vm.TextProperty2, vm.ImageBytes));
 
             Finish();
         }

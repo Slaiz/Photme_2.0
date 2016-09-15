@@ -11,12 +11,7 @@ namespace Photme_WPF
     {
         public App()
         {
-            var mw = new MainWindow
-            {
-                DataContext = new Main()
-            };
 
-            mw.Show();
         }
     }
 }

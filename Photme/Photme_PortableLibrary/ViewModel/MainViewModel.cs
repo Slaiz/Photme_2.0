@@ -4,7 +4,7 @@ using Photme_PortableLibrary.Model;
 
 namespace Photme_PortableLibrary.ViewModel
 {
-    public class MainViewModel : PropertyChanger
+    public class MainViewModel : BaseViewModel
     {
 
         private ObservableCollection<PhotoItem> itemsList = new ObservableCollection<PhotoItem>();
