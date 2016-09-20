@@ -17,7 +17,7 @@ namespace Photme_WPF.View
 
         public MainWindow()
         {
-            _mainViewModel = new MainViewModel();
+            _mainViewModel = MainViewModel.Instance;
             DataContext = _mainViewModel;
             InitializeComponent(); 
             Buttton1.Click+=Buttton1OnClick;

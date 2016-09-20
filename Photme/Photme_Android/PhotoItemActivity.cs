@@ -35,7 +35,7 @@ namespace Photme_Android
         Button saveButton;
         Button captureButton;
         byte[] _byteData;
-        MainViewModel vm = new MainViewModel();
+        MainViewModel _mainViewModel;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -43,6 +43,8 @@ namespace Photme_Android
 
             // set our layout to be the home screen
             SetContentView(Resource.Layout.PhotoDetails);
+
+            _mainViewModel = MainViewModel.Instance;
 
             nameTextEdit = FindViewById<EditText>(Resource.Id.NameText);
             notesTextEdit = FindViewById<EditText>(Resource.Id.NotesText);
@@ -52,8 +54,8 @@ namespace Photme_Android
             saveButton = FindViewById<Button>(Resource.Id.SaveButton);
             captureButton = FindViewById<Button>(Resource.Id.CaptureButton);
 
-            nameTextEdit.Text = vm.TextProperty1;
-            notesTextEdit.Text = vm.TextProperty2;
+            nameTextEdit.Text = _mainViewModel.TextProperty1;
+            notesTextEdit.Text = _mainViewModel.TextProperty2;
 
 
             imageView.SetImageResource(Resource.Drawable.Icon);
@@ -96,11 +98,11 @@ namespace Photme_Android
 
         void Save()
         {
-            vm.TextProperty1 = nameTextEdit.Text;
-            vm.TextProperty2 = notesTextEdit.Text;
-            vm.ImageBytes = _byteData;
+            _mainViewModel.TextProperty1 = nameTextEdit.Text;
+            _mainViewModel.TextProperty2 = notesTextEdit.Text;
+            _mainViewModel.ImageBytes = _byteData;
 
-            vm.ItemsList.Add(new PhotoItem(vm.TextProperty1, vm.TextProperty2, vm.ImageBytes));
+            _mainViewModel.AddPhoto();
 
             Finish();
         }
@@ -155,8 +157,6 @@ namespace Photme_Android
             {
                 ImageConverting(ref ImageHelp.Bitmap);
             }
-
-            GC.Collect();
         }
     }
 }

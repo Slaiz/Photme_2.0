@@ -15,13 +15,15 @@ namespace Photme_Android
         PhotoItemListAdapter _photoList;
         Button addPhotoButton;
         ListView photoListView;
-        MainViewModel mv = new MainViewModel();
+        MainViewModel _mainViewModel;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.Home);
+
+            _mainViewModel = MainViewModel.Instance;
 
             photoListView = FindViewById<ListView>(Resource.Id.photoList);
             addPhotoButton = FindViewById<Button>(Resource.Id.AddButton);
@@ -47,7 +49,7 @@ namespace Photme_Android
         {
             base.OnResume();
 
-            photos = mv.ItemsList;
+            photos = _mainViewModel.ItemsList;
 
             // create our adapter
             _photoList = new PhotoItemListAdapter(this, photos);

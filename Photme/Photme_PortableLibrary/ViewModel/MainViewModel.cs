@@ -14,6 +14,25 @@ namespace Photme_PortableLibrary.ViewModel
             get { return itemsList; }
         }
 
+        private MainViewModel()
+        {
+            
+        }
+
+        private static MainViewModel instance;
+
+        public static MainViewModel Instance
+        {
+            get
+            {
+                if (instance == null)
+                { 
+                    instance = new MainViewModel();
+                }
+                return instance;
+            }
+        }
+
         private string _textProperty1;
 
         private string _textProperty2;
@@ -72,6 +91,11 @@ namespace Photme_PortableLibrary.ViewModel
                 _imageBytes = value;
                 OnPropertyChanged(nameof(ImageBytes));
             }
+        }
+
+        public void AddPhoto()
+        {
+            ItemsList.Add(new PhotoItem(TextProperty1, TextProperty2, ImageBytes));
         }
 
     }
