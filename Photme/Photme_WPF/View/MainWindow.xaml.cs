@@ -29,7 +29,7 @@ namespace Photme_WPF.View
             if (_mainViewModel.TextProperty1 == "" || _mainViewModel.TextProperty2 == "")
             { MessageBox.Show("Please write all fields"); return; }
 
-            _mainViewModel.ItemsList.Add(new PhotoItem(_mainViewModel.TextProperty1, _mainViewModel.TextProperty2, _mainViewModel.ImageBytes));
+            _mainViewModel.AddPhoto();
             bm.OnPropertyChanged(nameof(_mainViewModel.ItemsList));
 
             _mainViewModel.TextProperty1 = "";
