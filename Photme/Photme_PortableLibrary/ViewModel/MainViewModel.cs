@@ -96,6 +96,7 @@ namespace Photme_PortableLibrary.ViewModel
         public void AddPhoto()
         {
             ItemsList.Add(new PhotoItem(TextProperty1, TextProperty2, ImageBytes));
+            OnPropertyChanged(nameof(ItemsList));
         }
 
     }

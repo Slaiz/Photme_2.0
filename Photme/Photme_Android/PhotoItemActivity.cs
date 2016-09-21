@@ -16,26 +16,20 @@ using Uri = Android.Net.Uri;
 
 namespace Photme_Android
 {
-    public static class ImageHelp
-    {
-        public static File File;
-        public static File Dir;
-        public static Bitmap Bitmap;
-    }
-
     [Activity(Label = "PhotoItemActivity")]
 
     // View/edit a Photo, capture image
 
     public class PhotoItemActivity : Activity
     {
-        ImageView imageView;
-        EditText notesTextEdit;
-        EditText nameTextEdit;
-        Button saveButton;
-        Button captureButton;
-        byte[] _byteData;
-        MainViewModel _mainViewModel;
+        private ImageView imageView;
+        private EditText notesTextEdit;
+        private EditText nameTextEdit;
+        private Button saveButton;
+        private Button captureButton;
+        private byte[] _byteData;
+        private MainViewModel _mainViewModel;
+        private ImageHelper _imageHelper;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -45,6 +39,7 @@ namespace Photme_Android
             SetContentView(Resource.Layout.PhotoDetails);
 
             _mainViewModel = MainViewModel.Instance;
+            _imageHelper = new ImageHelper();
 
             nameTextEdit = FindViewById<EditText>(Resource.Id.NameText);
             notesTextEdit = FindViewById<EditText>(Resource.Id.NotesText);
@@ -83,8 +78,9 @@ namespace Photme_Android
             }
         }
 
-        private void ImageConverting(ref Bitmap bitmap)
+        public void ImageConverting(Bitmap bitmap)
         {
+
             imageView.SetImageBitmap(bitmap);
 
             using (var stream = new MemoryStream())
@@ -92,8 +88,6 @@ namespace Photme_Android
                 bitmap.Compress(Bitmap.CompressFormat.Png, 0, stream);
                 _byteData = stream.ToArray();
             }
-
-            bitmap = null;
         }
 
         void Save()
@@ -117,13 +111,13 @@ namespace Photme_Android
 
         private void CreateDirectoryForPictures()
         {
-            ImageHelp.Dir = new File(
+            _imageHelper.Dir = new File(
                 Environment.GetExternalStoragePublicDirectory(
                     Environment.DirectoryPictures), "Photme_Android");
 
-            if (!ImageHelp.Dir.Exists())
+            if (!_imageHelper.Dir.Exists())
             {
-                ImageHelp.Dir.Mkdirs();
+                _imageHelper.Dir.Mkdirs();
             }
         }
 
@@ -131,9 +125,9 @@ namespace Photme_Android
         {
             Intent intent = new Intent(MediaStore.ActionImageCapture);
 
-            ImageHelp.File = new File(ImageHelp.Dir, String.Format("Images_{0}.jpg", Guid.NewGuid()));
+            _imageHelper.File = new File(_imageHelper.Dir, String.Format("Images_{0}.jpg", Guid.NewGuid()));
 
-            intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(ImageHelp.File));
+            intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(_imageHelper.File));
 
             StartActivityForResult(intent, 0);
         }
@@ -143,7 +137,7 @@ namespace Photme_Android
             base.OnActivityResult(requestCode, resultCode, data);
 
             Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
-            Uri contentUri = Uri.FromFile(ImageHelp.File);
+            Uri contentUri = Uri.FromFile(_imageHelper.File);
             mediaScanIntent.SetData(contentUri);
             SendBroadcast(mediaScanIntent);
 
@@ -151,11 +145,11 @@ namespace Photme_Android
             int height = Resources.DisplayMetrics.HeightPixels;
             int width = imageView.Height;
 
-            ImageHelp.Bitmap = ImageHelp.File.Path.LoadAndResizeBitmap(width, height);
+            _imageHelper.Bitmap = _imageHelper.File.Path.LoadAndResizeBitmap(width, height);
 
-            if (ImageHelp.Bitmap != null)
+            if (_imageHelper.Bitmap != null)
             {
-                ImageConverting(ref ImageHelp.Bitmap);
+                ImageConverting(_imageHelper.Bitmap);
             }
         }
     }

@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="BitmapHelper.cs" />
     <Compile Include="HomeActivity.cs" />
+    <Compile Include="ImageHelper.cs" />
     <Compile Include="PhotoItemActivity.cs" />
     <Compile Include="PhotoItemListAdapter.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
