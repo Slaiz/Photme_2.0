@@ -23,7 +23,7 @@ namespace Photme_Android
 
             SetContentView(Resource.Layout.Home);
 
-            _mainViewModel = MainViewModel.Instance;
+            _mainViewModel = new MainViewModel();
 
             photoListView = FindViewById<ListView>(Resource.Id.photoList);
             addPhotoButton = FindViewById<Button>(Resource.Id.AddButton);

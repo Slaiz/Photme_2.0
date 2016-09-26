@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using System.Dynamic;
 using System.Windows.Input;
 using Photme_PortableLibrary.Model;
+using Photme_PortableLibrary.Service;
 
 namespace Photme_PortableLibrary.ViewModel
 {
@@ -14,23 +16,17 @@ namespace Photme_PortableLibrary.ViewModel
             get { return itemsList; }
         }
 
-        private MainViewModel()
+        private IImageLoader _hello = new Main();
+
+        private string hello;
+
+        public string Hello
         {
-            
+            get { return _hello.SayHello();}
         }
 
-        private static MainViewModel instance;
-
-        public static MainViewModel Instance
+        public MainViewModel()
         {
-            get
-            {
-                if (instance == null)
-                { 
-                    instance = new MainViewModel();
-                }
-                return instance;
-            }
         }
 
         private string _textProperty1;

@@ -4,8 +4,10 @@ namespace Photme_PortableLibrary.Service
 {
     public interface IImageLoader
     {
-        void ImageLoad();
+        //void ImageLoad();
 
-        void ImageConverter<T>(T other);
+        //void ImageConverter<T>(T other);
+
+        string SayHello();
     }
 }

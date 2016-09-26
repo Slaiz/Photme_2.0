@@ -38,7 +38,7 @@ namespace Photme_Android
             // set our layout to be the home screen
             SetContentView(Resource.Layout.PhotoDetails);
 
-            _mainViewModel = MainViewModel.Instance;
+            _mainViewModel = new MainViewModel();
             _imageHelper = new ImageHelper();
 
             nameTextEdit = FindViewById<EditText>(Resource.Id.NameText);

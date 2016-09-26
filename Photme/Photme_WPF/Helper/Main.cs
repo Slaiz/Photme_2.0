@@ -15,7 +15,7 @@ namespace Photme_WPF.Helper
         public ICommand AddCommand { get; set; }
         public ICommand UploadCommand { get; set; }
 
-        MainViewModel vm = MainViewModel.Instance;
+        MainViewModel vm = new MainViewModel();
 
         public Main()
         {
@@ -43,6 +43,11 @@ namespace Photme_WPF.Helper
             FileStream fs = new FileStream(_path, FileMode.Open, FileAccess.Read);
             BinaryReader br = new BinaryReader(fs);
             vm.ImageBytes = br.ReadBytes((int)imageFileLength);
+        }
+
+        public string Hello()
+        {
+            return "Hello man";
         }
     }
 }
