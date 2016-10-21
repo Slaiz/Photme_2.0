@@ -2,7 +2,7 @@
 using System.Dynamic;
 using System.Windows.Input;
 using Photme_PortableLibrary.Model;
-using Photme_PortableLibrary.Service;
+using Photme_PortableLibrary.DI;
 
 namespace Photme_PortableLibrary.ViewModel
 {
@@ -16,18 +16,22 @@ namespace Photme_PortableLibrary.ViewModel
             get { return itemsList; }
         }
 
-        private IImageLoader _hello = new Main();
+        private IImageLoader _imageLoader;
 
-        private string hello;
+        public MainViewModel(IImageLoader imageLoader)
+        {
+            _imageLoader = imageLoader;
+        }
 
         public string Hello
         {
-            get { return _hello.SayHello();}
+            get { return _imageLoader.SayHello(); }
         }
 
-        public MainViewModel()
-        {
-        }
+        //public void Load()
+        //{
+        //   _imageLoader.ImageLoad();
+        //}
 
         private string _textProperty1;
 

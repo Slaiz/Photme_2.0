@@ -4,6 +4,7 @@ using System.Windows;
 using Microsoft.Win32;
 using Photme_PortableLibrary.Model;
 using Photme_PortableLibrary.ViewModel;
+using Photme_WPF.Helper;
 
 namespace Photme_WPF.View
 {
@@ -16,7 +17,8 @@ namespace Photme_WPF.View
 
         public MainWindow()
         {
-            _mainViewModel = new MainViewModel();
+            Main _main = new Main();
+            _mainViewModel = new MainViewModel(_main);
             DataContext = _mainViewModel;
             InitializeComponent();
              
