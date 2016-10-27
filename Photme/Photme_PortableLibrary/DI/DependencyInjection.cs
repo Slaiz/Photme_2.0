@@ -8,15 +8,15 @@ namespace Photme_PortableLibrary.DI
 {
     public static class DependencyInjection
     {
-        private static UnityContainer _unityContainer { get; set; }
+        public static IUnityContainer _unityContainer { get; private set; }
 
-        public static void Initialize()
+        public static void Initialize(IUnityContainer container)
         {
-            _unityContainer = new UnityContainer();
+            _unityContainer = container;
 
-            _unityContainer.RegisterType<IImageLoader, Main>(new ContainerControlledLifetimeManager());
+            _unityContainer.RegisterType<IImageLoader, ImageLoader>(new ContainerControlledLifetimeManager());
 
-            _unityContainer.Resolve<MainViewModel>();
+            _unityContainer.Resolve<ImageLoader>();
         }
     }
 }

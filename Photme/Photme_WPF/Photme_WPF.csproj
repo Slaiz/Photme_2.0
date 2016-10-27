@@ -69,7 +69,7 @@
     </Compile>
     <Compile Include="Helper\BmpConverter.cs" />
     <Compile Include="Helper\Command.cs" />
-    <Compile Include="Helper\Main.cs" />
+    <Compile Include="Helper\ImageLoader.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

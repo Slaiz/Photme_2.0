@@ -10,12 +10,12 @@ using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace Photme_WPF.Helper
 {
-    class Main:IImageLoader
+    class ImageLoader:IImageLoader
     {
         public ICommand AddCommand { get; set; }
         public ICommand UploadCommand { get; set; }
 
-        public Main()
+        public ImageLoader()
         {
             UploadCommand = new Command(arg => ImageLoad());
             //AddCommand = new Command(arg => ImageConverter<T>(T path));
